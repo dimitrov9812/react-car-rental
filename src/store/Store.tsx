@@ -13,6 +13,7 @@ export const StoreContext: React.Context<any> = React.createContext<any>(null);
 export const StoreProvider: React.FC<{}> = ({ children }) => {
     const store: IStore = useLocalObservable(() => ({ 
         isLoggedIn: false,
+        isLoading: false,
         loggedInCustomer: null,
         loginError: "",
         registerError: "",
@@ -26,9 +27,7 @@ export const StoreProvider: React.FC<{}> = ({ children }) => {
                         // Set logged in
                         store.isLoggedIn = true;
                         // Get full user data and update store
-                        store.setLoggedInCustomer(email);
-                        // Navigate home
-                        history.push('/home');
+                        store.setLoggedInCustomer(email, history);
                     } else {
                         store.loginError = "Invalid Email"
                     }
@@ -38,6 +37,8 @@ export const StoreProvider: React.FC<{}> = ({ children }) => {
             // Reset user data in the store
             store.isLoggedIn = false;
             store.loggedInCustomer = null;
+            localStorage.removeItem("isAuthenticated");
+            localStorage.removeItem("email");
             // Navigate to login
             history.push('/login');
         },
@@ -63,7 +64,7 @@ export const StoreProvider: React.FC<{}> = ({ children }) => {
                     }
                  });
         },
-        setLoggedInCustomer: (email: string): void => {
+        setLoggedInCustomer: async (email: string, history: any): Promise<void> => {
             // Search the json-sever for user with email
             axios.get(URL.customers)
                  .then((res) => {
@@ -72,7 +73,12 @@ export const StoreProvider: React.FC<{}> = ({ children }) => {
                      let index = customers.findIndex((customer: Customer) => customer.email === email);
                      if (index !== -1) {
                          // Set the logged in customer data in the store
-                         store.loggedInCustomer = customers[index];;
+                         store.loggedInCustomer = customers[index];
+                         // Set local storage variables
+                         localStorage.setItem("isAuthenticated", "1");
+                         localStorage.setItem("email",store.loggedInCustomer.email);
+                         // Stop loading
+                         store.isLoading = false;
                      }
                  });
         }
@@ -85,6 +91,7 @@ export const StoreProvider: React.FC<{}> = ({ children }) => {
 
 export interface IStore {
     isLoggedIn: boolean,
+    isLoading: boolean,
     loggedInCustomer: Customer | null,
     loginError: string,
     registerError: string,
@@ -92,5 +99,5 @@ export interface IStore {
     login(email: string, history: any): void,
     logout(hostory: any): void,
     register(username: string, email: string, phoneNumber: string, history: any): void,
-    setLoggedInCustomer(emai: string): void,
+    setLoggedInCustomer(emai: string, history: any): Promise<void>,
 }
