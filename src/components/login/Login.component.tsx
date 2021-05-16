@@ -45,9 +45,7 @@ const LoginComponent: React.FC<{}> = () => {
         return (
             <div className="wrapper fadeInDown">
                 <div id="formContent">
-                    <div className="fadeIn first">
-                    </div>
-                    {store.isLoggedIn ? "true" : "false"}
+                    <div className="fadeIn first" />
                     <form onSubmit={(e) => onSubmit(e)} >
                         <input type="text" id="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" className="fadeIn second" name="email" placeholder="example@mail.com" value={email} onChange={(e) => handleEmailChange(e)} />
                         <input type="submit" value="Login" className="fadeIn fourth" />

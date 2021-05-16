@@ -35,6 +35,7 @@ const AppRouterComponent = (): JSX.Element | null => {
         <Router>
             <NavComponent />
             <Switch>
+                <Route exact path="/" component={LoginComponent} />
                 <Route exact path="/login" component={LoginComponent} />
                 <Route exact path="/register" component={RegisterComponent} />
                 <Route exact path="/home" component={HomeComponent} />
