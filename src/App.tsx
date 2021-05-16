@@ -7,8 +7,13 @@ import {
   Link
 } from "react-router-dom";
 
+// Components
+import Login from './components/login/Login.component';
+import { StoreProvider } from './store/Store';
+
 function App() {
   return (
+    <StoreProvider>
     <Router>
       <div>
         <nav>
@@ -41,7 +46,7 @@ function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/login">
-            <div>login</div>
+            <Login/>
           </Route>
           <Route path="/home">
             <div>home</div>
@@ -67,6 +72,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </StoreProvider>
   );
 }
 

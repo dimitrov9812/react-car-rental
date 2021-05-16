@@ -1,13 +1,13 @@
 {
     "customers": [
-      { "id": 1, "name": "Alexander Dimitrow", "email": "testUser1@gmail.com", "phoneNumber": "089273729" },
-      { "id": 2, "name": "Alexander Dimitrow", "email": "testUser2@gmail.com", "phoneNumber": "089273729" },
-      { "id": 3, "name": "Alexander Dimitrow", "email": "testUser3@gmail.com", "phoneNumber": "089273729" },
-      { "id": 4, "name": "Alexander Dimitrow", "email": "testUser4@gmail.com", "phoneNumber": "089273729" },
-      { "id": 5, "name": "Alexander Dimitrow", "email": "testUser5@gmail.com", "phoneNumber": "089273729" },
-      { "id": 6, "name": "Alexander Dimitrow", "email": "testUser6@gmail.com", "phoneNumber": "089273729" },
-      { "id": 7, "name": "Alexander Dimitrow", "email": "testUser7@gmail.com", "phoneNumber": "089273729" },
-      { "id": 8, "name": "Alexander Dimitrow", "email": "testUser8@gmail.com", "phoneNumber": "089273729" }
+      { "id": 1, "name": "Alexander Dimitrow", "email": "testUser1@gmail.com", "phoneNumber": "089273729", "isAdmin" : true },
+      { "id": 2, "name": "Alexander Dimitrow", "email": "testUser2@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
+      { "id": 3, "name": "Alexander Dimitrow", "email": "testUser3@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
+      { "id": 4, "name": "Alexander Dimitrow", "email": "testUser4@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
+      { "id": 5, "name": "Alexander Dimitrow", "email": "testUser5@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
+      { "id": 6, "name": "Alexander Dimitrow", "email": "testUser6@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
+      { "id": 7, "name": "Alexander Dimitrow", "email": "testUser7@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
+      { "id": 8, "name": "Alexander Dimitrow", "email": "testUser8@gmail.com", "phoneNumber": "089273729", "isAdmin" : false }
     ],
     "vehicles": [
       { "id": 1, "brand": "Renault", "model": "Clio1", "construction_year" : 2012, "vehicleType" : "economy", "fuelType": "petrol", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 },
