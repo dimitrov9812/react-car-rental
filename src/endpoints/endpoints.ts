@@ -1,5 +1,5 @@
 export const URL = {
-    getCustomers: 'http://localhost:3000/customers',
-    getVehicles: 'http://localhost:3000/vehicles',
+    customers: 'http://localhost:3000/customers',
+    vehicles: 'http://localhost:3000/vehicles',
     rentedVehicles: 'http://localhost:3000/renderVehicles',
 }

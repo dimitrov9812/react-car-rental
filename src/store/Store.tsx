@@ -12,19 +12,69 @@ export const StoreContext: React.Context<any> = React.createContext<any>(null);
 
 export const StoreProvider: React.FC<{}> = ({ children }) => {
     const store: IStore = useLocalObservable(() => ({ 
-        loggedIn: false,
+        isLoggedIn: false,
+        loggedInCustomer: null,
+        loginError: "",
+        registerError: "",
         title: "Mobx Tilte",
-        login: (email: string): void => {
+        login: (email: string, history: any): void => {
             console.log("trying to login user with email: " + email);
-            axios.get(URL.getCustomers)
-                 .then((res: AxiosResponse<Customer>) =>{ 
-                    console.log(res.data);
+            axios.get(URL.customers)
+                 .then((res: AxiosResponse<Customer[]>) => {
+                    let index = res.data.findIndex((customer: Customer) => customer.email === email);
+                    if (index !== -1) {
+                        // Set logged in
+                        store.isLoggedIn = true;
+                        // Get full user data and update store
+                        store.setLoggedInCustomer(email);
+                        // Navigate home
+                        history.push('/home');
+                    } else {
+                        store.loginError = "Invalid Email"
+                    }
                  });
         },
-        register: (username: string, email: string, phoneNumber: string): void => {
-            console.log("trying to register user with username: " + username);
-            console.log("trying to register user with email: " + email);
-            console.log("trying to register user with phoneNumber: " + phoneNumber);
+        logout: (history: any): void => {
+            // Reset user data in the store
+            store.isLoggedIn = false;
+            store.loggedInCustomer = null;
+            // Navigate to login
+            history.push('/login');
+        },
+        register: (username: string, email: string, phoneNumber: string, history: any): void => {
+            axios.get(URL.customers)
+                 .then((res: AxiosResponse<Customer[]>) => {
+                    if (res.data) {
+                        let index: number = res.data.findIndex((customer: Customer) => customer.email === email);
+                        let id: number = res.data.length + 1;
+                        // Check if the user exists
+                        if (index === -1) {
+                            // Create new customer
+                            let customer: Customer = new Customer(id, username, email, phoneNumber, false);
+                            // Update the json-server
+                            axios.post(URL.customers, customer)
+                                 .then((res: AxiosResponse<any>) => {
+                                    // Navigate to login
+                                    history.push('/login');
+                                 });
+                        } else {
+                            store.registerError = "We already have a registered user with that email"
+                        }
+                    }
+                 });
+        },
+        setLoggedInCustomer: (email: string): void => {
+            // Search the json-sever for user with email
+            axios.get(URL.customers)
+                 .then((res) => {
+                     let customers: Customer[] = res.data;
+                    // Check if we have a valid customer
+                     let index = customers.findIndex((customer: Customer) => customer.email === email);
+                     if (index !== -1) {
+                         // Set the logged in customer data in the store
+                         store.loggedInCustomer = customers[index];;
+                     }
+                 });
         }
     }));
 
@@ -34,8 +84,13 @@ export const StoreProvider: React.FC<{}> = ({ children }) => {
 }
 
 export interface IStore {
-    loggedIn: boolean,
+    isLoggedIn: boolean,
+    loggedInCustomer: Customer | null,
+    loginError: string,
+    registerError: string,
     title: string,
-    login(email: string): void,
-    register(username: string, email: string, phoneNumber: string): void
+    login(email: string, history: any): void,
+    logout(hostory: any): void,
+    register(username: string, email: string, phoneNumber: string, history: any): void,
+    setLoggedInCustomer(emai: string): void,
 }

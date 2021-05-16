@@ -22,7 +22,7 @@ const App = (): JSX.Element => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/login" component={LoginComponent} />
+          <Route path="/login" component={LoginComponent}/>
           <Route path="/register" component={RegisterComponent} />
           <Route path="/home">
             <div>home</div>

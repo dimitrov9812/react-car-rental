@@ -1,13 +1,18 @@
 import { useContext } from 'react';
 import { IStore, StoreContext } from '../../store/Store';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useObserver } from 'mobx-react-lite';
 
 const NavComponent = (): JSX.Element | null => {
-  const store: IStore = useContext(StoreContext)
+  const history = useHistory();
+  const store: IStore = useContext(StoreContext);
+
+  const logout = (): void => {
+    store.logout(history)
+  }
 
   const renderNav = (): JSX.Element | null => {
-      if (store.loggedIn) {
+      if (store.isLoggedIn) {
           return (
             <div>
             <nav>
@@ -32,6 +37,11 @@ const NavComponent = (): JSX.Element | null => {
                 </li>
                 <li>
                   <Link to="/rentals/request">request rentals</Link>
+                </li>
+                <li>
+                  <button onClick={() => logout()}>
+                      Logout
+                  </button>
                 </li>
               </ul>
             </nav>

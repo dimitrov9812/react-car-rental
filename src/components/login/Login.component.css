@@ -261,4 +261,9 @@ html {
   *:focus {
       outline: none;
   }
-  
+  .loginErrorWrap {
+    padding-bottom:  20px;
+  }
+  .loginError {
+    color: red;
+  }

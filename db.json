@@ -1,25 +1,187 @@
 {
-    "customers": [
-      { "id": 1, "name": "Alexander Dimitrow", "email": "testUser1@gmail.com", "phoneNumber": "089273729", "isAdmin" : true },
-      { "id": 2, "name": "Alexander Dimitrow", "email": "testUser2@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
-      { "id": 3, "name": "Alexander Dimitrow", "email": "testUser3@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
-      { "id": 4, "name": "Alexander Dimitrow", "email": "testUser4@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
-      { "id": 5, "name": "Alexander Dimitrow", "email": "testUser5@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
-      { "id": 6, "name": "Alexander Dimitrow", "email": "testUser6@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
-      { "id": 7, "name": "Alexander Dimitrow", "email": "testUser7@gmail.com", "phoneNumber": "089273729", "isAdmin" : false },
-      { "id": 8, "name": "Alexander Dimitrow", "email": "testUser8@gmail.com", "phoneNumber": "089273729", "isAdmin" : false }
-    ],
-    "vehicles": [
-      { "id": 1, "brand": "Renault", "model": "Clio1", "constructionYear" : 2012, "vehicleType" : "economy", "fuelType": "petrol", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 },
-      { "id": 2, "brand": "Renault", "model": "Clio2", "constructionYear" : 2012, "vehicleType" : "estate", "fuelType": "diesel", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 },
-      { "id": 3, "brand": "Renault", "model": "Clio3", "constructionYear" : 2012, "vehicleType" : "economy", "fuelType": "petrol", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 },
-      { "id": 4, "brand": "Renault", "model": "Clio4", "constructionYear" : 2012, "vehicleType" : "luxury", "fuelType": "petrol", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 },
-      { "id": 5, "brand": "Renault", "model": "Clio5", "constructionYear" : 2012, "vehicleType" : "economy", "fuelType": "hybrid", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 },
-      { "id": 6, "brand": "Renault", "model": "Clio6", "constructionYear" : 2012, "vehicleType" : "economy", "fuelType": "petrol", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 },
-      { "id": 7, "brand": "Renault", "model": "Clio7", "constructionYear" : 2012, "vehicleType" : "cargo", "fuelType": "petrol", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 },
-      { "id": 8, "brand": "Renault", "model": "Clio8", "constructionYear" : 2012, "vehicleType" : "economy", "fuelType": "electryc", "numberOfSeats" : 5, "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg", "pricePerDay" : 150, "availableVehicles" : 5 }
-    ],
-    "rentedVehicles": [
-        { "vehicleID": 3, "customerID": 3, "startDate" : "", "endDate" : "" }
-    ]
+  "customers": [
+    {
+      "id": 1,
+      "name": "Alexander Dimitrow",
+      "email": "testUser1@gmail.com",
+      "phoneNumber": "089273729",
+      "isAdmin": true
+    },
+    {
+      "id": 2,
+      "name": "Alexander Dimitrow",
+      "email": "testUser2@gmail.com",
+      "phoneNumber": "089273729",
+      "isAdmin": false
+    },
+    {
+      "id": 3,
+      "name": "Alexander Dimitrow",
+      "email": "testUser3@gmail.com",
+      "phoneNumber": "089273729",
+      "isAdmin": false
+    },
+    {
+      "id": 4,
+      "name": "Alexander Dimitrow",
+      "email": "testUser4@gmail.com",
+      "phoneNumber": "089273729",
+      "isAdmin": false
+    },
+    {
+      "id": 5,
+      "name": "Alexander Dimitrow",
+      "email": "testUser5@gmail.com",
+      "phoneNumber": "089273729",
+      "isAdmin": false
+    },
+    {
+      "id": 6,
+      "name": "Alexander Dimitrow",
+      "email": "testUser6@gmail.com",
+      "phoneNumber": "089273729",
+      "isAdmin": false
+    },
+    {
+      "id": 7,
+      "name": "Alexander Dimitrow",
+      "email": "testUser7@gmail.com",
+      "phoneNumber": "089273729",
+      "isAdmin": false
+    },
+    {
+      "id": 8,
+      "name": "Alexander Dimitrow",
+      "email": "testUser8@gmail.com",
+      "phoneNumber": "089273729",
+      "isAdmin": false
+    },
+    {
+      "id": 9,
+      "name": "test",
+      "email": "test@abv.bg",
+      "phoneNumber": "08299292",
+      "isAdmin": false
+    },
+    {
+      "id": 10,
+      "name": "test2",
+      "email": "tes2@abv.bg",
+      "phoneNumber": "0829392813",
+      "isAdmin": false
+    },
+    {
+      "id": 11,
+      "name": "test3",
+      "email": "test3@gmail.com",
+      "phoneNumber": "089231231",
+      "isAdmin": false
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "brand": "Renault",
+      "model": "Clio1",
+      "constructionYear": 2012,
+      "vehicleType": "economy",
+      "fuelType": "petrol",
+      "numberOfSeats": 5,
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
+      "pricePerDay": 150,
+      "availableVehicles": 5
+    },
+    {
+      "id": 2,
+      "brand": "Renault",
+      "model": "Clio2",
+      "constructionYear": 2012,
+      "vehicleType": "estate",
+      "fuelType": "diesel",
+      "numberOfSeats": 5,
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
+      "pricePerDay": 150,
+      "availableVehicles": 5
+    },
+    {
+      "id": 3,
+      "brand": "Renault",
+      "model": "Clio3",
+      "constructionYear": 2012,
+      "vehicleType": "economy",
+      "fuelType": "petrol",
+      "numberOfSeats": 5,
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
+      "pricePerDay": 150,
+      "availableVehicles": 5
+    },
+    {
+      "id": 4,
+      "brand": "Renault",
+      "model": "Clio4",
+      "constructionYear": 2012,
+      "vehicleType": "luxury",
+      "fuelType": "petrol",
+      "numberOfSeats": 5,
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
+      "pricePerDay": 150,
+      "availableVehicles": 5
+    },
+    {
+      "id": 5,
+      "brand": "Renault",
+      "model": "Clio5",
+      "constructionYear": 2012,
+      "vehicleType": "economy",
+      "fuelType": "hybrid",
+      "numberOfSeats": 5,
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
+      "pricePerDay": 150,
+      "availableVehicles": 5
+    },
+    {
+      "id": 6,
+      "brand": "Renault",
+      "model": "Clio6",
+      "constructionYear": 2012,
+      "vehicleType": "economy",
+      "fuelType": "petrol",
+      "numberOfSeats": 5,
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
+      "pricePerDay": 150,
+      "availableVehicles": 5
+    },
+    {
+      "id": 7,
+      "brand": "Renault",
+      "model": "Clio7",
+      "constructionYear": 2012,
+      "vehicleType": "cargo",
+      "fuelType": "petrol",
+      "numberOfSeats": 5,
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
+      "pricePerDay": 150,
+      "availableVehicles": 5
+    },
+    {
+      "id": 8,
+      "brand": "Renault",
+      "model": "Clio8",
+      "constructionYear": 2012,
+      "vehicleType": "economy",
+      "fuelType": "electryc",
+      "numberOfSeats": 5,
+      "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
+      "pricePerDay": 150,
+      "availableVehicles": 5
+    }
+  ],
+  "rentedVehicles": [
+    {
+      "vehicleID": 3,
+      "customerID": 3,
+      "startDate": "",
+      "endDate": ""
+    }
+  ]
 }
