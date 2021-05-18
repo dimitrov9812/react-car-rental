@@ -61,7 +61,7 @@
       "name": "test",
       "email": "test@abv.bg",
       "phoneNumber": "08299292",
-      "isAdmin": false
+      "isAdmin": true
     },
     {
       "id": 10,
@@ -75,6 +75,13 @@
       "name": "test3",
       "email": "test3@gmail.com",
       "phoneNumber": "089231231",
+      "isAdmin": false
+    },
+    {
+      "id": 12,
+      "name": "notAdmin",
+      "email": "notAdmin@abv.bg",
+      "phoneNumber": "08922213213",
       "isAdmin": false
     }
   ],

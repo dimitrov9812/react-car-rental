@@ -4,3 +4,8 @@ export enum InputTypes {
     email,
     phoneNumber
 }
+
+// All the pages available in the navigation
+export enum NavPages {
+
+}

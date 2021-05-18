@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useObserver } from 'mobx-react-lite';
 import { IStore, StoreContext } from '../../store/Store';
+import { IUserstore } from '../../store/UserStore';
 import { InputTypes } from '../enums/Enums';
 import { useHistory } from 'react-router';
 import '../login/Login.component.css';
@@ -9,14 +10,16 @@ import SpinnerComponent from '../../spinner/Spinner.component';
 
 const RegisterComponent: React.FC<{}> = () => {
     const history = useHistory();
-    const store: IStore = useContext(StoreContext)
+    const stores: IStore = useContext(StoreContext);
+    const userStore: IUserstore = stores.userStore;
+
     const [username, setUsername] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [phoneNumber, setPhoneNumber] = useState<string>('');
 
     // Check if user is already logged in and redirect to home if true
     useEffect(() => {
-        if (store.isLoggedIn) {
+        if (userStore.isLoggedIn) {
             history.push('/home');
         }
     });
@@ -24,13 +27,13 @@ const RegisterComponent: React.FC<{}> = () => {
     const onSubmit = (e: any): void => {
         e.preventDefault();
         if (username && email && phoneNumber) {
-            store.register(username, email, phoneNumber, history);
+            userStore.register(username, email, phoneNumber, history);
         } else if (!username) {
-            store.registerError = "Please enter username"
+            userStore.registerError = "Please enter username"
         } else if (!email) {
-            store.registerError = "Please enter email"
+            userStore.registerError = "Please enter email"
         } else if (!phoneNumber) {
-            store.registerError = "Please enter phone number"
+            userStore.registerError = "Please enter phone number"
         }
     }
 
@@ -47,7 +50,7 @@ const RegisterComponent: React.FC<{}> = () => {
                 break;
         }
 
-        store.registerError = "";
+        userStore.registerError = "";
     }
 
     const renderSpinner = (): JSX.Element => {
@@ -66,7 +69,7 @@ const RegisterComponent: React.FC<{}> = () => {
                         <input type="text" id="phoneNumber" className="fadeIn fourth" name="phoneNumber" placeholder="phone number" value={phoneNumber} onChange={(e) => handleInputChage(InputTypes.phoneNumber, e)} />
                         <input type="submit" value="Register" className="fadeIn fourth" />
                         <div className="loginErrorWrap">
-                            <span className="loginError">{store.registerError ? store.registerError : null}</span>
+                            <span className="loginError">{userStore.registerError ? userStore.registerError : null}</span>
                         </div>
                         <div id="formFooter">
                             Already have an account? <br />
@@ -80,7 +83,7 @@ const RegisterComponent: React.FC<{}> = () => {
 
     return useObserver(() => (
         <div>
-            {store.isLoading ? renderSpinner() : renderRegister()}
+            {userStore.isLoading ? renderSpinner() : renderRegister()}
         </div>
     ))
 }

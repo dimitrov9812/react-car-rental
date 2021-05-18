@@ -1,18 +1,36 @@
 import { useContext } from 'react';
 import { IStore, StoreContext } from '../../store/Store';
+import { IUserstore } from '../../store/UserStore';
 import { Link, useHistory } from 'react-router-dom';
 import { useObserver } from 'mobx-react-lite';
 
 const NavComponent = (): JSX.Element | null => {
     const history = useHistory();
-    const store: IStore = useContext(StoreContext);
+    const stores: IStore = useContext(StoreContext);
+    const userStore: IUserstore = stores.userStore;
 
     const logout = (): void => {
-        store.logout(history)
+        userStore.logout(history)
+    }
+
+    const renderAdminLinks = (): JSX.Element | undefined => {
+        if (userStore.loggedInCustomer?.isAdmin) {
+            return (
+                <div>
+                    <li>
+                        <Link to="/manage-vehicles">(Admin) Manage Vehicles</Link>
+                    </li>
+                    <li>
+                        <Link to="/manage-users">(Admin) Manage Users</Link>
+                    </li>
+                </div>
+
+            )
+        }
     }
 
     const renderNav = (): JSX.Element | null => {
-        if (store.isLoggedIn) {
+        if (userStore.isLoggedIn) {
             return (
                 <div>
                     <nav>
@@ -24,9 +42,6 @@ const NavComponent = (): JSX.Element | null => {
                                 <Link to="/browse">browse</Link>
                             </li>
                             <li>
-                                <Link to="/vehicle-details">vehicle-details</Link>
-                            </li>
-                            <li>
                                 <Link to="/rentals/all">all rentals</Link>
                             </li>
                             <li>
@@ -35,6 +50,7 @@ const NavComponent = (): JSX.Element | null => {
                             <li>
                                 <Link to="/rentals/request">request rentals</Link>
                             </li>
+                            {renderAdminLinks()}
                             <li>
                                 <button onClick={() => logout()}>
                                     Logout

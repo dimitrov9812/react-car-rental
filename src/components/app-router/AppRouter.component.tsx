@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     Switch,
     Route,
@@ -6,30 +7,56 @@ import {
     useHistory
 } from "react-router-dom";
 import { IStore, StoreContext } from '../../store/Store';
+import { IUserstore } from '../../store/UserStore';
 import { useObserver } from 'mobx-react-lite';
 // Components
 import LoginComponent from '../login/Login.component';
 import RegisterComponent from '../register/Register.component';
 import NavComponent from '../navbar/Nav.component';
 import HomeComponent from '../home/Home.component';
+import ManageVehiclesComponent from '../admin-components/vehicle/manage-vehicles/ManageVehicles.component';
+import ManageUsersComponent from '../admin-components/vehicle/users/manage-users/ManageUsers.component';
+import BrowseComponent from '../browse/Browse.component';
 
 const AppRouterComponent = (): JSX.Element | null => {
-    const store: IStore = useContext(StoreContext);
+    const stores: IStore = useContext(StoreContext);
+    const userStore: IUserstore = stores.userStore;
     const history = useHistory();
 
     // Check if user is already logged in with the help of localstorage
     useEffect(() => {
-        store.isLoading = true;
-        if (localStorage.getItem('isAuthenticated') === "1" && localStorage.getItem('email') !== null) {
-            let email: string | null = localStorage.getItem('email');
-            if (email != null) {
-                store.login(email, history);
+        // declare the function
+        const checkAsyncStorage = async () => {
+            userStore.isLoading = true;
+            let isAuthenticated: string | null = await AsyncStorage.getItem('isAuthenticated');
+            let email: string | null = await AsyncStorage.getItem('email');
+            if (isAuthenticated === "1" && email !== "null") {
+                if (email != null) {
+                    userStore.login(email, history);
+                }
+            } else {
+                userStore.isLoggedIn = false;
+                userStore.isLoading = false;
             }
-        } else {
-            store.isLoggedIn = false;
-            store.isLoading = false;
+        }
+        // Call the function
+        if (!userStore.isLoggedIn) {
+            checkAsyncStorage();
         }
     });
+
+    const renderAdminRoutes = (): JSX.Element => {
+        return (
+            <div>
+                <Route exact path="/manage-vehicles">
+                    <ManageVehiclesComponent />
+                </Route>
+                <Route exact path="/manage-users">
+                    <ManageUsersComponent />
+                </Route>
+            </div>
+        )
+    }
 
     return useObserver(() => (
         <Router>
@@ -40,7 +67,7 @@ const AppRouterComponent = (): JSX.Element | null => {
                 <Route exact path="/register" component={RegisterComponent} />
                 <Route exact path="/home" component={HomeComponent} />
                 <Route exact path="/browse">
-                    <div>browse</div>
+                    <BrowseComponent />
                 </Route>
                 <Route exact path="/vehicle-details">
                     <div>vehicle-details</div>
@@ -54,6 +81,8 @@ const AppRouterComponent = (): JSX.Element | null => {
                 <Route exact path="/rentals/request">
                     <div>request rental</div>
                 </Route>
+                {userStore.loggedInCustomer?.isAdmin ? renderAdminRoutes() : null}
+
             </Switch>
         </Router>
     ))
