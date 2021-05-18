@@ -5,84 +5,120 @@
       "name": "Alexander Dimitrow",
       "email": "testUser1@gmail.com",
       "phoneNumber": "089273729",
-      "isAdmin": true
+      "isAdmin": true,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 2,
       "name": "Alexander Dimitrow",
       "email": "testUser2@gmail.com",
       "phoneNumber": "089273729",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 3,
       "name": "Alexander Dimitrow",
       "email": "testUser3@gmail.com",
       "phoneNumber": "089273729",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 4,
       "name": "Alexander Dimitrow",
       "email": "testUser4@gmail.com",
       "phoneNumber": "089273729",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 5,
       "name": "Alexander Dimitrow",
       "email": "testUser5@gmail.com",
       "phoneNumber": "089273729",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 6,
       "name": "Alexander Dimitrow",
       "email": "testUser6@gmail.com",
       "phoneNumber": "089273729",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 7,
       "name": "Alexander Dimitrow",
       "email": "testUser7@gmail.com",
       "phoneNumber": "089273729",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 8,
       "name": "Alexander Dimitrow",
       "email": "testUser8@gmail.com",
       "phoneNumber": "089273729",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 9,
       "name": "test",
       "email": "test@abv.bg",
       "phoneNumber": "08299292",
-      "isAdmin": true
+      "isAdmin": true,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 10,
       "name": "test2",
       "email": "tes2@abv.bg",
       "phoneNumber": "0829392813",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 11,
       "name": "test3",
       "email": "test3@gmail.com",
       "phoneNumber": "089231231",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     },
     {
       "id": 12,
       "name": "notAdmin",
       "email": "notAdmin@abv.bg",
       "phoneNumber": "08922213213",
-      "isAdmin": false
+      "isAdmin": false,
+      "isVIP": false,
+      "rentedVehicles": [],
+      "totalVehiclesRented": 0
     }
   ],
   "vehicles": [
@@ -96,7 +132,8 @@
       "numberOfSeats": 5,
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
       "pricePerDay": 150,
-      "availableVehicles": 5
+      "availableVehicles": 5,
+      "isCurrentlyRented": true
     },
     {
       "id": 2,
@@ -108,7 +145,8 @@
       "numberOfSeats": 5,
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
       "pricePerDay": 150,
-      "availableVehicles": 5
+      "availableVehicles": 5,
+      "isCurrentlyRented": false
     },
     {
       "id": 3,
@@ -120,7 +158,8 @@
       "numberOfSeats": 5,
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
       "pricePerDay": 150,
-      "availableVehicles": 5
+      "availableVehicles": 5,
+      "isCurrentlyRented": false
     },
     {
       "id": 4,
@@ -132,7 +171,8 @@
       "numberOfSeats": 5,
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
       "pricePerDay": 150,
-      "availableVehicles": 5
+      "availableVehicles": 5,
+      "isCurrentlyRented": false
     },
     {
       "id": 5,
@@ -144,7 +184,8 @@
       "numberOfSeats": 5,
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
       "pricePerDay": 150,
-      "availableVehicles": 5
+      "availableVehicles": 5,
+      "isCurrentlyRented": false
     },
     {
       "id": 6,
@@ -156,7 +197,8 @@
       "numberOfSeats": 5,
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
       "pricePerDay": 150,
-      "availableVehicles": 5
+      "availableVehicles": 5,
+      "isCurrentlyRented": false
     },
     {
       "id": 7,
@@ -168,7 +210,8 @@
       "numberOfSeats": 5,
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
       "pricePerDay": 150,
-      "availableVehicles": 5
+      "availableVehicles": 5,
+      "isCurrentlyRented": false
     },
     {
       "id": 8,
@@ -180,7 +223,8 @@
       "numberOfSeats": 5,
       "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Renault_Clio_II_front_20090329.jpg/800px-Renault_Clio_II_front_20090329.jpg",
       "pricePerDay": 150,
-      "availableVehicles": 5
+      "availableVehicles": 5,
+      "isCurrentlyRented": false
     }
   ],
   "rentedVehicles": [

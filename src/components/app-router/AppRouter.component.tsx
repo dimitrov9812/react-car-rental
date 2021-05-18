@@ -9,6 +9,8 @@ import {
 import { IStore, StoreContext } from '../../store/Store';
 import { IUserstore } from '../../store/UserStore';
 import { useObserver } from 'mobx-react-lite';
+// Routes
+import { Routes } from '../enums/Enums';
 // Components
 import LoginComponent from '../login/Login.component';
 import RegisterComponent from '../register/Register.component';
@@ -17,6 +19,7 @@ import HomeComponent from '../home/Home.component';
 import ManageVehiclesComponent from '../admin-components/vehicle/manage-vehicles/ManageVehicles.component';
 import ManageUsersComponent from '../admin-components/vehicle/users/manage-users/ManageUsers.component';
 import BrowseComponent from '../browse/Browse.component';
+import VehicleDetailsComponent from '../vehicle/vehicle-details/VehicleDetails.component';
 
 const AppRouterComponent = (): JSX.Element | null => {
     const stores: IStore = useContext(StoreContext);
@@ -43,15 +46,15 @@ const AppRouterComponent = (): JSX.Element | null => {
         if (!userStore.isLoggedIn) {
             checkAsyncStorage();
         }
-    });
+    }, []);
 
     const renderAdminRoutes = (): JSX.Element => {
         return (
             <div>
-                <Route exact path="/manage-vehicles">
+                <Route exact path={Routes.ADMIN_MANAGE_VEHICLES}>
                     <ManageVehiclesComponent />
                 </Route>
-                <Route exact path="/manage-users">
+                <Route exact path={Routes.ADMIN_MANAGE_USERS}>
                     <ManageUsersComponent />
                 </Route>
             </div>
@@ -62,27 +65,26 @@ const AppRouterComponent = (): JSX.Element | null => {
         <Router>
             <NavComponent />
             <Switch>
-                <Route exact path="/" component={LoginComponent} />
-                <Route exact path="/login" component={LoginComponent} />
-                <Route exact path="/register" component={RegisterComponent} />
-                <Route exact path="/home" component={HomeComponent} />
-                <Route exact path="/browse">
+                <Route exact path={Routes.DEFAULT} component={LoginComponent} />
+                <Route exact path={Routes.LOGIN} component={LoginComponent} />
+                <Route exact path={Routes.REGISTER} component={RegisterComponent} />
+                <Route exact path={Routes.HOME} component={HomeComponent} />
+                <Route exact path={Routes.BROWSE}>
                     <BrowseComponent />
                 </Route>
-                <Route exact path="/vehicle-details">
-                    <div>vehicle-details</div>
+                <Route exact path="/vehicle/details">
+                    <VehicleDetailsComponent />
                 </Route>
-                <Route exact path="/rentals/all">
-                    <div>all rentals</div>
+                <Route exact path={Routes.ALL_RENTED}>
+                    <div>all rented</div>
                 </Route>
-                <Route exact path="/rentals/mine">
-                    <div>mine rentals</div>
+                <Route exact path={Routes.MINE_RENTED}>
+                    <div>mine rented</div>
                 </Route>
-                <Route exact path="/rentals/request">
+                <Route exact path={Routes.REQUEST_RENTED}>
                     <div>request rental</div>
                 </Route>
                 {userStore.loggedInCustomer?.isAdmin ? renderAdminRoutes() : null}
-
             </Switch>
         </Router>
     ))

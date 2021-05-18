@@ -3,6 +3,12 @@ import { IStore, StoreContext } from '../../store/Store';
 import { IUserstore } from '../../store/UserStore';
 import { Link, useHistory } from 'react-router-dom';
 import { useObserver } from 'mobx-react-lite';
+// ROUTES
+import { Routes } from '../enums/Enums';
+// Styles
+import './Nav.component.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
 const NavComponent = (): JSX.Element | null => {
     const history = useHistory();
@@ -16,15 +22,14 @@ const NavComponent = (): JSX.Element | null => {
     const renderAdminLinks = (): JSX.Element | undefined => {
         if (userStore.loggedInCustomer?.isAdmin) {
             return (
-                <div>
-                    <li>
-                        <Link to="/manage-vehicles">(Admin) Manage Vehicles</Link>
+                <div className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                        <a className="nav-link"><Link to={Routes.ADMIN_MANAGE_VEHICLES}>(Admin) Manage Vehicles</Link></a>
                     </li>
-                    <li>
-                        <Link to="/manage-users">(Admin) Manage Users</Link>
+                    <li className="nav-item">
+                        <a className="nav-link"><Link to={Routes.ADMIN_MANAGE_USERS}>(Admin) Manage Users</Link></a>
                     </li>
                 </div>
-
             )
         }
     }
@@ -32,37 +37,36 @@ const NavComponent = (): JSX.Element | null => {
     const renderNav = (): JSX.Element | null => {
         if (userStore.isLoggedIn) {
             return (
-                <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/home">home</Link>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <a className="navbar-brand" href={Routes.HOME}>Car Rental</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item active">
+                                <a className="nav-link"><Link to={Routes.HOME}>Home</Link></a>
                             </li>
-                            <li>
-                                <Link to="/browse">browse</Link>
+                            <li className="nav-item">
+                                <a className="nav-link"><Link to={Routes.BROWSE}>Browse</Link></a>
                             </li>
-                            <li>
-                                <Link to="/rentals/all">all rentals</Link>
+                            <li className="nav-item">
+                                <a className="nav-link"><Link to={Routes.ALL_RENTED}>List All Rented</Link></a>
                             </li>
-                            <li>
-                                <Link to="/rentals/mine">mine rentals</Link>
+                            <li className="nav-item">
+                                <a className="nav-link"><Link to={Routes.MINE_RENTED}>List My Rentals</Link></a>
                             </li>
-                            <li>
-                                <Link to="/rentals/request">request rentals</Link>
+                            <li className="nav-item">
+                                <a className="nav-link"><Link to={Routes.REQUEST_RENTED}>Request Car</Link></a>
                             </li>
                             {renderAdminLinks()}
-                            <li>
-                                <button onClick={() => logout()}>
-                                    Logout
-                  </button>
-                            </li>
                         </ul>
-                    </nav>
-                </div>
+                        <FontAwesomeIcon onClick={() => userStore.logout(history)} icon={faSignInAlt} color='black' size={'2x'} className="sign-out-icon"/>
+                    </div>
+                </nav>
             )
-        } else {
-            return null
         }
+        return null
     }
     return useObserver(() => (
         renderNav()

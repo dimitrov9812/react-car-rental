@@ -6,7 +6,8 @@ export class Vehicle {
                 public vehicleType: string,
                 public fuelType: string,
                 public numberOfSeats: number,
-                public pucture: string,
+                public picture: string,
                 public pricePerDay: number,
-                public availableVehicles: number) {}
+                public availableVehicles: number,
+                public isCurrentlyRented: boolean) {}
 }

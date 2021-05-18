@@ -53,7 +53,7 @@ export const UserStore = () => {
                         // Check if the user exists
                         if (index === -1) {
                             // Create new customer
-                            let customer: Customer = new Customer(id, username, email, phoneNumber, false);
+                            let customer: Customer = new Customer(id, username, email, phoneNumber, false, false, [], 0);
                             // Update the json-server
                             axios.post(URL.customers, customer)
                                  .then((res: AxiosResponse<any>) => {

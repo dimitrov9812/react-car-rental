@@ -39,13 +39,13 @@ const RegisterComponent: React.FC<{}> = () => {
 
     const handleInputChage = (type: InputTypes, e: any) => {
         switch (type) {
-            case type = InputTypes.username:
+            case type = InputTypes.USERNAME:
                 setUsername(e.target.value);
                 break;
-            case type = InputTypes.email:
+            case type = InputTypes.EMAIL:
                 setEmail(e.target.value);
                 break;
-            case type = InputTypes.phoneNumber:
+            case type = InputTypes.PHONE_NUMBER:
                 setPhoneNumber(e.target.value);
                 break;
         }
@@ -64,9 +64,9 @@ const RegisterComponent: React.FC<{}> = () => {
                     <div className="fadeIn first">
                     </div>
                     <form onSubmit={(e) => onSubmit(e)} >
-                        <input type="text" id="username" className="fadeIn second" name="username" placeholder="username" value={username} onChange={(e) => handleInputChage(InputTypes.username, e)} />
-                        <input type="text" id="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" className="fadeIn third" name="email" placeholder="email" value={email} onChange={(e) => handleInputChage(InputTypes.email, e)} />
-                        <input type="text" id="phoneNumber" className="fadeIn fourth" name="phoneNumber" placeholder="phone number" value={phoneNumber} onChange={(e) => handleInputChage(InputTypes.phoneNumber, e)} />
+                        <input type="text" id="username" className="fadeIn second" name="username" placeholder="username" value={username} onChange={(e) => handleInputChage(InputTypes.USERNAME, e)} />
+                        <input type="text" id="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" className="fadeIn third" name="email" placeholder="email" value={email} onChange={(e) => handleInputChage(InputTypes.EMAIL, e)} />
+                        <input type="text" id="phoneNumber" className="fadeIn fourth" name="phoneNumber" placeholder="phone number" value={phoneNumber} onChange={(e) => handleInputChage(InputTypes.PHONE_NUMBER, e)} />
                         <input type="submit" value="Register" className="fadeIn fourth" />
                         <div className="loginErrorWrap">
                             <span className="loginError">{userStore.registerError ? userStore.registerError : null}</span>
