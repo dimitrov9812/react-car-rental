@@ -28,10 +28,16 @@ const BrowseComponent = (): JSX.Element => {
     } else {
       if (vehicleStore.vehicles.length != 0) {
         return (
-          <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-            {vehicleStore.vehicles
-                         .map((vehicle: Vehicle) => <VehicleCardComponent key={vehicle.id} vehicle={vehicle}/>)}
+          <div>
+            <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '80%', margin: '0 auto'}}>
+              <h1>Browse Cars</h1>
+            </div>
+            <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '80%', margin: '0 auto'}}>
+                {vehicleStore.vehicles
+                             .map((vehicle: Vehicle) => <VehicleCardComponent key={vehicle.id} vehicle={vehicle}/>)}
           </div>
+          </div>
+          
         )
       } else {
         return (
@@ -43,10 +49,10 @@ const BrowseComponent = (): JSX.Element => {
     }
   }
   return (
-    <div style={{backgroundColor: 'red', width: 1600, height: 700, overflowY: 'scroll'}}>
+    <div style={{backgroundColor: 'white'}}>
       {renderMainContent()}
     </div>
-  )
+  ) 
 }
 
 export default BrowseComponent;

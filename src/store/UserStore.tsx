@@ -5,6 +5,7 @@ import { useLocalObservable } from "mobx-react-lite";
 import { URL } from "../endpoints/endpoints";
 // Models
 import { Customer } from "../models/CustomerModel";
+import { Vehicle } from "../models/VehicleModel";
 
 export const UserStore = () => {
     const userStore: IUserstore = useLocalObservable(() => ({ 
@@ -14,8 +15,15 @@ export const UserStore = () => {
         loginError: "",
         registerError: "",
         title: "Mobx Tilte",
+        customers: [],
+        getAllUsers: () => {
+            axios.get(URL.customers)
+                 .then((res: AxiosResponse<Customer[]>) => {
+                    let customers: Customer[] = res.data;
+                    userStore.customers = customers;
+                 });
+        },
         login: (email: string, history: any): void => {
-            console.log("trying to login user with email: " + email);
             axios.get(URL.customers)
                  .then((res: AxiosResponse<Customer[]>) => {
                     let index = res.data.findIndex((customer: Customer) => customer.email === email);
@@ -25,6 +33,8 @@ export const UserStore = () => {
                         // Get full user data and update store
                         userStore.setLoggedInCustomer(email, history);
                     } else {
+                        userStore.isLoading = false;
+                        userStore.isLoggedIn = false;
                         userStore.loginError = "Invalid Email"
                     }
                  });
@@ -53,7 +63,7 @@ export const UserStore = () => {
                         // Check if the user exists
                         if (index === -1) {
                             // Create new customer
-                            let customer: Customer = new Customer(id, username, email, phoneNumber, false, false, [], 0);
+                            let customer: Customer = new Customer(id.toString(), username, email, phoneNumber, false, false, [], 0);
                             // Update the json-server
                             axios.post(URL.customers, customer)
                                  .then((res: AxiosResponse<any>) => {
@@ -87,6 +97,71 @@ export const UserStore = () => {
                                      });
                      }
                  });
+        },
+        addCustomer(customer: Customer): void {
+            let index: number = userStore.customers.findIndex((c: Customer) => c.email === customer.email);
+            // Check if the user exists
+            if (index === -1) {
+                // Update the json-server
+                axios.post(URL.customers, customer)
+                     .then((res: AxiosResponse<any>) => {
+                         userStore.customers.push(customer);
+                      });
+            }
+        },
+        editCustomer(customer: Customer): void {
+            let index = this.customers.findIndex((c: Customer) => c.id == customer.id);
+            if (index == -1) {
+                // Remove the customer from the server
+                axios.delete(URL.customers + `/${customer.id}`)
+                     .then(() => 
+                        // Update the customer in the server
+                        axios.post(URL.customers, customer)
+                             .then((res) => {
+                                 console.log('Successfully Updated Customer');
+                             })
+                     )
+            }
+        },
+        removeCustomer(id: string): void {
+            // Remove custoemr from customers array
+            let index: number = this.customers.findIndex((c: Customer) => c.id == id);
+                        
+            // if we have it
+            if (index != -1) {
+                // we remove it
+                this.customers.splice(index,1);
+            }
+            axios.delete(URL.customers + `/${id}`)
+                 .then(() => console.log("Successfully removed customer with id: " + id))
+
+        },
+        rentACar(vehicle: Vehicle): void {
+            // Check if vehicle is already in rented by the current user
+            let index = userStore.loggedInCustomer?.rentedVehicles.findIndex((v: Vehicle) => v.id === vehicle.id);
+
+            if (index == -1 && userStore.loggedInCustomer) {
+                // add the vehicle as his vehicle
+                userStore.loggedInCustomer?.rentedVehicles.push(vehicle);
+                userStore.loggedInCustomer.totalVehiclesRented += 1;
+
+                if (!userStore.loggedInCustomer.isVIP) {
+                    if (userStore.loggedInCustomer.totalVehiclesRented > 3) {
+                        userStore.loggedInCustomer.isVIP = true;
+                    }
+                }
+                
+
+                axios.delete(URL.customers + `/${userStore.loggedInCustomer.id}`)
+                     .then(() => 
+                        // Update the customer in the server
+                        axios.post(URL.customers, userStore.loggedInCustomer)
+                             .then((res) => {
+                                 console.log(res);
+                                 console.log('Successfully Updated Customer2');
+                             })
+                     )
+            }
         }
     }));
 
@@ -100,8 +175,14 @@ export interface IUserstore {
     loginError: string,
     registerError: string,
     title: string,
+    customers: Customer[],
+    getAllUsers(): void,
     login(email: string, history: any): void,
     logout(hostory: any): Promise<void>,
     register(username: string, email: string, phoneNumber: string, history: any): void,
     setLoggedInCustomer(emai: string, history: any): Promise<void>,
+    addCustomer(customer: Customer): void,
+    editCustomer(customer: Customer): void,
+    removeCustomer(id: string): void,
+    rentACar(vehicle: Vehicle): void
 }

@@ -24,10 +24,28 @@ const NavComponent = (): JSX.Element | null => {
             return (
                 <div className="navbar-nav mr-auto">
                     <li className="nav-item">
+                        <a className="nav-link"><Link to={Routes.ALL_RENTED}>(Admin) List All Rented</Link></a>
+                    </li>
+                    <li className="nav-item">
                         <a className="nav-link"><Link to={Routes.ADMIN_MANAGE_VEHICLES}>(Admin) Manage Vehicles</Link></a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link"><Link to={Routes.ADMIN_MANAGE_USERS}>(Admin) Manage Users</Link></a>
+                    </li>
+                </div>
+            )
+        }
+    }
+
+    const renderUserLinks = (): JSX.Element | undefined => {
+        if (!userStore.loggedInCustomer?.isAdmin) {
+            return (
+                <div className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                        <a className="nav-link"><Link to={Routes.MINE_RENTED}>List My Rentals</Link></a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link"><Link to={Routes.REQUEST_RENTED}>Request Car</Link></a>
                     </li>
                 </div>
             )
@@ -50,15 +68,7 @@ const NavComponent = (): JSX.Element | null => {
                             <li className="nav-item">
                                 <a className="nav-link"><Link to={Routes.BROWSE}>Browse</Link></a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link"><Link to={Routes.ALL_RENTED}>List All Rented</Link></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link"><Link to={Routes.MINE_RENTED}>List My Rentals</Link></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link"><Link to={Routes.REQUEST_RENTED}>Request Car</Link></a>
-                            </li>
+                            {renderUserLinks()}
                             {renderAdminLinks()}
                         </ul>
                         <FontAwesomeIcon onClick={() => userStore.logout(history)} icon={faSignInAlt} color='black' size={'2x'} className="sign-out-icon"/>

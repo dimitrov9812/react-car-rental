@@ -16,7 +16,7 @@ const VehicleDetailsComponent: React.FC<any> = (): JSX.Element => {
 
     const renderMainContent = (): JSX.Element => {
         if (vehicle) {
-            return <VehicleDetailsCardComponent vehicle={vehicle}/>
+            return <VehicleDetailsCardComponent vehicle={vehicle} isActionsEnabled={true}/>
         } else {
             return <div>No vehicle found with the selected id</div>
         }

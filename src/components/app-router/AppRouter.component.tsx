@@ -20,6 +20,10 @@ import ManageVehiclesComponent from '../admin-components/vehicle/manage-vehicles
 import ManageUsersComponent from '../admin-components/vehicle/users/manage-users/ManageUsers.component';
 import BrowseComponent from '../browse/Browse.component';
 import VehicleDetailsComponent from '../vehicle/vehicle-details/VehicleDetails.component';
+import RentACarComponent from '../rentals/rent-a-car/RentACar.component';
+import RequestACarComponent from '../rentals/rental-request/RequestACar.component';
+import MyRentedCarsComponent from '../rentals/user-rentals/MyRentedCars.component';
+import AllRentedComponent from '../rentals/all-rentals/AllRented.component';
 
 const AppRouterComponent = (): JSX.Element | null => {
     const stores: IStore = useContext(StoreContext);
@@ -51,11 +55,30 @@ const AppRouterComponent = (): JSX.Element | null => {
     const renderAdminRoutes = (): JSX.Element => {
         return (
             <div>
+                <Route exact path={Routes.ALL_RENTED}>
+                    <AllRentedComponent />
+                </Route>
                 <Route exact path={Routes.ADMIN_MANAGE_VEHICLES}>
                     <ManageVehiclesComponent />
                 </Route>
                 <Route exact path={Routes.ADMIN_MANAGE_USERS}>
                     <ManageUsersComponent />
+                </Route>
+            </div>
+        )
+    }
+
+    const renderUserRoutes = (): JSX.Element => {
+        return (
+            <div>
+                <Route exact path={Routes.MINE_RENTED}>
+                    <MyRentedCarsComponent />
+                </Route>
+                <Route exact path={Routes.REQUEST_RENTED}>
+                    <RequestACarComponent />
+                </Route>
+                <Route exact path={Routes.RENT_A_CAR}>
+                    <RentACarComponent />
                 </Route>
             </div>
         )
@@ -72,19 +95,11 @@ const AppRouterComponent = (): JSX.Element | null => {
                 <Route exact path={Routes.BROWSE}>
                     <BrowseComponent />
                 </Route>
-                <Route exact path="/vehicle/details">
+                <Route exact path={Routes.VEHICLE_DETAILS}>
                     <VehicleDetailsComponent />
                 </Route>
-                <Route exact path={Routes.ALL_RENTED}>
-                    <div>all rented</div>
-                </Route>
-                <Route exact path={Routes.MINE_RENTED}>
-                    <div>mine rented</div>
-                </Route>
-                <Route exact path={Routes.REQUEST_RENTED}>
-                    <div>request rental</div>
-                </Route>
-                {userStore.loggedInCustomer?.isAdmin ? renderAdminRoutes() : null}
+                
+                {userStore.loggedInCustomer?.isAdmin ? renderAdminRoutes() : renderUserRoutes()}
             </Switch>
         </Router>
     ))

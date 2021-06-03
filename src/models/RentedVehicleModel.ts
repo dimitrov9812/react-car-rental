@@ -1,6 +1,7 @@
 export class RentedVehicle {
-    constructor(public vehicleId: string,
-                public customerID: string,
+    constructor(public id: number,
+                public vehicleId: number,
+                public customerID: number,
                 public startDate: Date,
-                public newDate: Date) {}
+                public endDate: Date) {}
 }

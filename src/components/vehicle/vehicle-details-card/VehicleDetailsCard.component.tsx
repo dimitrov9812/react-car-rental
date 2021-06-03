@@ -16,7 +16,6 @@ const VehicleDetailsCardComponent: React.FC<any> = ({ vehicle }): JSX.Element =>
     return (
         <div className="container">
             <div className="row">
-                <h1>here</h1>
                 <div className="col-md-8 col-md-offset-2 wrapper">
                     <div className="row" id="gradient">
                         <div className="col-md-4">
@@ -49,7 +48,7 @@ const VehicleDetailsCardComponent: React.FC<any> = ({ vehicle }): JSX.Element =>
                                             <td>{_vehicle.fuelType}</td>
                                         </tr>
                                         <tr>
-                                            <td className="success">Is there any vehicles like this currently rented</td>
+                                            <td className="success">Is vehicle currenlty rented</td>
                                             <td>{_vehicle.isCurrentlyRented ? <FontAwesomeIcon icon={faCheckSquare} color='green'/> : <FontAwesomeIcon icon={faTimesCircle} color='red'/>}</td>
                                         </tr>
                                         <tr>

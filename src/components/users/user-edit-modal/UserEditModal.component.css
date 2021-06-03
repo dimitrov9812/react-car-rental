@@ -1,0 +1,66 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+label {
+    color: white;
+}
+
+.error-wrap {
+    background-color: red;
+    width: 85%;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.error {
+    color: white;
+    font-size: 15px;
+}
+
+.form-content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form-heading {
+    color: white;
+}
+
+label {
+    width: 85%;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.save-button-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.save-button {
+    width: 85%;
+    margin-top: 20px;
+}
+
+.close-button {
+    position: absolute;
+    background-color: black;
+    color: red;
+    right: 5px;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+}

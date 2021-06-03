@@ -44,20 +44,22 @@ const LoginComponent: React.FC<{}> = () => {
 
     const renderLogin = (): JSX.Element => {
         return (
-            <div className="wrapper fadeInDown">
-                <div id="formContent">
-                    <div className="fadeIn first" />
-                    <form onSubmit={(e) => onSubmit(e)} >
-                        <input type="text" id="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" className="fadeIn second" name="email" placeholder="example@mail.com" value={email} onChange={(e) => handleEmailChange(e)} />
-                        <input type="submit" value="Login" className="fadeIn fourth" />
-                        <div className="loginErrorWrap">
-                            <span className="loginError">{userStore.loginError ? userStore.loginError : null}</span>
-                        </div>
-                        <div id="formFooter">
-                            Don't have an account? <br />
-                            <a className="underlineHover" href="/register">Register</a>
-                        </div>
-                    </form>
+            <div className="container">
+                <div className="wrapper fadeInDown">
+                    <div id="formContent">
+                        <div className="fadeIn first" />
+                        <form onSubmit={(e) => onSubmit(e)} >
+                            <input type="text" id="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" className="fadeIn second" name="email" placeholder="example@mail.com" value={email} onChange={(e) => handleEmailChange(e)} />
+                            <input type="submit" value="Login" className="fadeIn fourth" />
+                            <div className="loginErrorWrap">
+                                <span className="loginError">{userStore.loginError ? userStore.loginError : null}</span>
+                            </div>
+                            <div id="formFooter">
+                                Don't have an account? <br />
+                                <a className="underlineHover" href="/register">Register</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
@@ -66,8 +68,8 @@ const LoginComponent: React.FC<{}> = () => {
     return useObserver(() => (
         <div>
             {userStore.isLoading ? renderSpinner() :
-             userStore.isLoggedIn ? null :
-             renderLogin()}
+                userStore.isLoggedIn ? null :
+                    renderLogin()}
         </div>
     ))
 }

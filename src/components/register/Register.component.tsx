@@ -59,23 +59,25 @@ const RegisterComponent: React.FC<{}> = () => {
 
     const renderRegister = (): JSX.Element => {
         return (
-            <div className="wrapper fadeInDown">
-                <div id="formContent">
-                    <div className="fadeIn first">
+            <div className="container">
+                <div className="wrapper fadeInDown">
+                    <div id="formContent">
+                        <div className="fadeIn first">
+                        </div>
+                        <form onSubmit={(e) => onSubmit(e)} >
+                            <input type="text" id="username" className="fadeIn second" name="username" placeholder="username" value={username} onChange={(e) => handleInputChage(InputTypes.USERNAME, e)} />
+                            <input type="text" id="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" className="fadeIn third" name="email" placeholder="email" value={email} onChange={(e) => handleInputChage(InputTypes.EMAIL, e)} />
+                            <input type="text" id="phoneNumber" className="fadeIn fourth" name="phoneNumber" placeholder="phone number" value={phoneNumber} onChange={(e) => handleInputChage(InputTypes.PHONE_NUMBER, e)} />
+                            <input type="submit" value="Register" className="fadeIn fourth" />
+                            <div className="loginErrorWrap">
+                                <span className="loginError">{userStore.registerError ? userStore.registerError : null}</span>
+                            </div>
+                            <div id="formFooter">
+                                Already have an account? <br />
+                                <a className="underlineHover" href="/login">Login</a>
+                            </div>
+                        </form>
                     </div>
-                    <form onSubmit={(e) => onSubmit(e)} >
-                        <input type="text" id="username" className="fadeIn second" name="username" placeholder="username" value={username} onChange={(e) => handleInputChage(InputTypes.USERNAME, e)} />
-                        <input type="text" id="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" className="fadeIn third" name="email" placeholder="email" value={email} onChange={(e) => handleInputChage(InputTypes.EMAIL, e)} />
-                        <input type="text" id="phoneNumber" className="fadeIn fourth" name="phoneNumber" placeholder="phone number" value={phoneNumber} onChange={(e) => handleInputChage(InputTypes.PHONE_NUMBER, e)} />
-                        <input type="submit" value="Register" className="fadeIn fourth" />
-                        <div className="loginErrorWrap">
-                            <span className="loginError">{userStore.registerError ? userStore.registerError : null}</span>
-                        </div>
-                        <div id="formFooter">
-                            Already have an account? <br />
-                            <a className="underlineHover" href="/login">Login</a>
-                        </div>
-                    </form>
                 </div>
             </div>
         )

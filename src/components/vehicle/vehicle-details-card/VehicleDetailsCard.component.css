@@ -6,4 +6,7 @@
 .image {
     margin-right: 20px;
     cursor: pointer;
+    width: 800px;
+    height: 500px;
+    object-fit: contain;
 }
