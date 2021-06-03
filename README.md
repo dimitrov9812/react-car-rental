@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# Car Rental 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created for an university task. The task was to create car rental web service which let's user browse and rent cars. Admin portal was needed in order to be able to CRUD other Customers and Vehicles. More details can be found in the task.doc file in the repository
 
-## Available Scripts
+## How to start
 
-In the project directory, you can run:
+Open terminal in the folder and run:
 
-### `yarn start`
+### `npm run-script start-server`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app uses json server to mock a real server, so in order to run in you must start the mock server with the command above.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm start`
 
-### `yarn test`
+This will start the project and serve it. If you haven't specified a port for the json server it should be running on port 3000 so now you must specify port for the development server different that 3000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App Functions
 
-### `yarn build`
+## Login / Register
+As an app user you can browse the app in 2 modes - user and admin. Each mode has it's own features separated from one another. Component appearance, routes nad actions are being changed when chaning roles.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## User Role
+- Browse all vehicles visualized in small cards
+- Open Vehicle details page where you can see more detailed card component with vehicle details
+- Request a vehicle for rent
+- Requesting a vehicle can be done with a discount based on how many days you rent the vehicle for, being a VIP customer gives you 15% off
+- Discounts cannot be stacked
+- Fill in the rent form
+- Your rented vehicles show up on a different route
+- The whole list of vehicles is getting updated after someone rents a vehicle. Vehicles which are rented get a 'Rented' badge
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Admin Role
+- Browse all vehicles visualized in small cards.
+- Open Vehicle details page where you can see more detailed card component with vehicle details
+- See a table of all the users where you can perform CRUD operations
+   - You cannot edit/remove other admin users
+   - When removing a user you also remove all of it's connections with vehicles - All the vehicles he rented are now marked as free for rent, rentdetails data is updated
+- See a table of all vehicles where you can perform CRUD operations
+   - You cannot edit/remove vehicles which are currently rented
+- See a table with all the vehicle order records - there you can see some details about each of the orders and the id's of the vehicles and also customers who made the orders, also start date and end date. The table contains the id's of the user and vehicle only. In future we could update each table row to be clickable and expandable with way more details about the order.
