@@ -1,6 +1,6 @@
 # Car Rental 
 
-This project was created for an university task. The task was to create car rental web service which let's user browse and rent cars. Admin portal was needed in order to be able to CRUD other Customers and Vehicles. More details can be found in the task.doc file in the repository
+This project was created for an university task. The task was to create car rental web service which let's user browse and rent cars. Admin portal was needed in order to be able to CRUD other Customers and Vehicles. More details can be found in the task.doc file in the repository. I have tried tracking my taks with a project board. Here is a link to it - https://trello.com/invite/b/aooVKRlj/d11274c8fdb16fcb9c964ec5a1151211/car-rental-board
 
 ## How to start
 
@@ -38,3 +38,8 @@ As an app user you can browse the app in 2 modes - user and admin. Each mode has
 - See a table of all vehicles where you can perform CRUD operations
    - You cannot edit/remove vehicles which are currently rented
 - See a table with all the vehicle order records - there you can see some details about each of the orders and the id's of the vehicles and also customers who made the orders, also start date and end date. The table contains the id's of the user and vehicle only. In future we could update each table row to be clickable and expandable with way more details about the order.
+
+### Future Updates
+- Better Styles
+- More details on some of the views
+- Track when rent is over and automatically update vehicle state
